@@ -1,0 +1,143 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"location": {
+			"type": "string",
+			"defaultValue": "eastus2"
+		},
+		"virtualMachineName": {
+			"type": "string"
+		},
+		"virtualMachineSize": {
+			"type": "string"
+		},
+		"virtualNetworkName": {
+			"type": "string"
+		},
+		"vNetResourceGroup": {
+			"type": "string"
+		},
+		"networkInterfaceName": {
+			"type": "string"
+		},
+		"subnetName": {
+			"type": "string"
+        },
+        "workspaceName":{  
+            "type": "string",
+            "metadata":{  
+               "description":"Specifies the name of the workspace."
+            }
+         },
+         "imageName" : {
+             "type": "string"
+		 },
+		 "workspaceRG": {
+			"type": "string"
+		}
+
+	},
+	"variables": {
+		"vnetId": "[resourceId(parameters('vNetResourceGroup'),'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+		"subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "apiVersionVMExtensions": "2015-06-15"
+	},
+	"resources": [
+		{
+			"name": "[parameters('virtualMachineName')]",
+			"type": "Microsoft.Compute/virtualMachines",
+			"apiVersion": "2019-12-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "UpdateManagement" : "windows"
+            },
+			"dependsOn": [
+				"[concat('Microsoft.Network/networkInterfaces/', parameters('virtualMachineName'))]"
+			],
+			"properties": {
+				"hardwareProfile": {
+					"vmSize": "[parameters('virtualMachineSize')]"
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachineName')]",
+                    "adminUsername": "vmadmin",
+                    "adminPassword": "Mpcazure@123"
+                  },
+                  "storageProfile": {
+                    "osDisk": {
+                        "createOption": "fromImage",
+                        "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS"
+                            }
+                        },
+                    "imageReference": {
+                      "id": "[parameters('imageName')]"
+                    }
+				},
+				"networkProfile": {
+					"networkInterfaces": [{
+						"id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('virtualMachineName'))]"
+					}]
+				}
+			}
+        },
+        {  
+            "type":"Microsoft.Compute/virtualMachines/extensions",
+            "name":"[concat(parameters('virtualMachineName'), '/MicrosoftMonitoringAgent')]",
+            "apiVersion":"2015-06-15",
+            "location":"[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+            ],
+            "properties":{  
+               "publisher":"Microsoft.EnterpriseCloud.Monitoring",
+               "type":"MicrosoftMonitoringAgent",
+               "typeHandlerVersion":"1.0",
+               "autoUpgradeMinorVersion":true,
+               "settings":{  
+                "workspaceId":"[reference(resourceId(parameters('workspaceRG'),'Microsoft.OperationalInsights/workspaces/', parameters('workspaceName')),'2015-03-20').customerId]"
+               },
+               "protectedSettings":{  
+                "workspaceKey":"[listKeys(resourceId(parameters('workspaceRG'),'Microsoft.OperationalInsights/workspaces/', parameters('workspaceName')), '2015-03-20').primarySharedKey]"
+               }
+            }
+		 },
+		 {
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "2019-02-01",
+            "name": "[parameters('virtualMachineName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Basic"
+            },
+            "properties": {
+                "publicIpAllocationMethod": "Dynamic"
+            }
+        },
+		{
+			"name": "[parameters('virtualMachineName')]",
+			"type": "Microsoft.Network/networkInterfaces",
+			"apiVersion": "2016-09-01",
+			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Network/publicIpAddresses/', parameters('virtualMachineName'))]"
+			],
+			"properties": {
+				"ipConfigurations": [{
+					"name": "ipconfig1",
+					"properties": {
+						"subnet": {
+							"id": "[variables('subnetRef')]"
+						},
+						"privateIPAllocationMethod": "Dynamic",
+						"publicIpAddress": {
+							"id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('virtualMachineName'))]"
+						}
+					}
+				}]
+			}
+		}
+	],
+	"outputs": {}
+}

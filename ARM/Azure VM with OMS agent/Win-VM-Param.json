@@ -1,0 +1,36 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "LOCATION": {
+            "value": "EastUS2"
+        },
+        "VIRTUALMACHINENAME" : {
+            "value" : "Test-Win2019-01"
+        },
+        "VIRTUALMACHINESIZE" :{
+            "value" : "Standard_D2s_v3"
+        },
+        "virtualNetworkName" : {
+            "value" : "VMfromImage-vnet"
+        },
+        "vNetResourceGroup" : {
+            "value" : "VMfromImage"
+        },
+        "networkInterfaceName" : {
+            "value" : "Test-Win2019-01"
+        },
+        "subnetName" : {
+            "value" : "default"
+        },
+        "workspaceName" : {
+            "value": "Artisan-oms"
+        },
+        "workspaceRG" : {
+            "value": "updatemanagement"
+        },
+        "imageName" : {
+            "value": "/subscriptions/3a15f85a-c70d-4edd-b827-bebae05513a6/resourceGroups/UpdateManagement/providers/Microsoft.Compute/galleries/windows2019/images/windows2019/versions/0.0.2"
+        }
+    }
+}   
