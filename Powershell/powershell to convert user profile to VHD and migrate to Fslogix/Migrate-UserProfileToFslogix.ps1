@@ -10,15 +10,17 @@ This script convert Local Profile to VHD and migrate to FSLogix Profile Containe
 #########################################################################################
 # Requires -RunAsAdministrator
 # Requires FSLogix Agent with comes with FSlogix app(frx.exe)
+# Modify below parameter
 #########################################################################################
 # fslogix target file share profile path
 $FilesharePath = "<\\domain.com\share\path>"
-
+# User profile source path - you can copy all user profiles to single folder and then run the script
+$userProfilePath = "c:\users"
 #########################################################################################
-# Do not edit here
+# Main code
 #########################################################################################
 $ENV:PATH=”$ENV:PATH;C:\Program Files\fslogix\apps\”
-$oldprofiles = gci c:\users | ?{$_.psiscontainer -eq $true} | select -Expand fullname | sort | out-gridview -OutputMode Multiple -title "Select profile(s) to convert"
+$oldprofiles = gci $userProfilePath | ?{$_.psiscontainer -eq $true} | select -Expand fullname | sort | out-gridview -OutputMode Multiple -title "Select profile(s) to convert"
 
 # foreach old profile
 foreach ($old in $oldprofiles) {
