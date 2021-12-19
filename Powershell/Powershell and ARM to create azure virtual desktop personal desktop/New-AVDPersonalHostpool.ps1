@@ -3,7 +3,7 @@
         Runbook to Create AVD personal hostpool
 
     .NOTES
-        AUTHOR: Arun sabale (brainscale)
+        AUTHOR: Arun sabale
         LASTEDIT: Dec 05, 2021
 #>
 
