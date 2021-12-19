@@ -149,11 +149,8 @@ try{
                         }
                     
 
-        New-AzResourceGroupDeployment `
-            -Name $HostPoolName `
-            -ResourceGroupName $ResourceGroupName `
-            -TemplateUri "https://github.com/Ar-Sa/Arun/blob/26b748a5a90e3fa9397d6b56f818ec744319cdc3/Powershell/Powershell%20and%20ARM%20to%20create%20azure%20virtual%20desktop%20personal%20desktop/New-personalAVDTemplate.json" `
-            -TemplateParameterObject $Parameters
+        New-AzResourceGroupDeployment -TemplateUri "https://raw.githubusercontent.com/Ar-Sa/Arun/master/Powershell/Powershell%20and%20ARM%20to%20create%20azure%20virtual%20desktop%20personal%20desktop/New-personalAVDTemplate.json" `
+        -TemplateParameterObject $Parameters -ResourceGroupName $ResourceGroupName -Name $HostPoolName
       #endregion                
 }
 catch
