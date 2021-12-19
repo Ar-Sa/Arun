@@ -45,9 +45,9 @@ param(
     [Parameter(mandatory = $false)]
     [string]$ApplicationGroupType = "Desktop",  #Desktop or RemoteApp
     [Parameter(mandatory = $true)]
-    [string]$DomainPass = "Arunms@2",
+    [string]$DomainPass = "********",
     [Parameter(mandatory = $true)]
-    [string]$DomainUser = "arun2@powershelltalk.com",
+    [string]$DomainUser = "admin*@powershelltalk.com",
     [Parameter(mandatory = $true)]
     [string]$Domain = "powershelltalk.com",
     [Parameter(mandatory = $true)]
@@ -152,7 +152,7 @@ try{
         New-AzResourceGroupDeployment `
             -Name $HostPoolName `
             -ResourceGroupName $ResourceGroupName `
-            -TemplateFile "C:\Users\Aruns\OneDrive - Brainscale Inc\BS\My data\Apress\Chapter 8 Create and configure host pools and session hosts\New-personalAVDTemplate.json" `
+            -TemplateUri "https://github.com/Ar-Sa/Arun/blob/26b748a5a90e3fa9397d6b56f818ec744319cdc3/Powershell/Powershell%20and%20ARM%20to%20create%20azure%20virtual%20desktop%20personal%20desktop/New-personalAVDTemplate.json" `
             -TemplateParameterObject $Parameters
       #endregion                
 }
