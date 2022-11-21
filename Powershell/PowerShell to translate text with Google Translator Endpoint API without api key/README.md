@@ -1,0 +1,1 @@
+PowerShell to translate text with Google Translator Endpoint API without api key
