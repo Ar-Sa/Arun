@@ -4,7 +4,9 @@ This article describes security best practices for Azure cloud.  This recommend
 
 <img class="wp-image-1495 size-full" src="https://powershelltalk.com/wp-content/uploads/2022/12/Azure-Securityazure-security-best-practices-social@3x.png" alt="Azure Cloud Best Practices to Keep Your Cloud Secure" width="1280" height="670" /> Azure Cloud Best Practices to Keep Your Cloud Secure[/caption]
 
-Also refer below KB for additional resource specific best practices and recommendations:
+Continue reading @  <a href="https://powershelltalk.com/2022/12/28/azure-cloud-best-practices-to-keep-your-cloud-secure/">==&gt;&gt; Overall Azure cloud best practices to Keep Your Cloud Secure</a>
+
+Also refer below link for additional resource specific best practices and recommendations:
 
 <a class="row-title" href="https://powershelltalk.com/2022/12/27/azure-virtual-machine-recommendations-and-best-practices/" aria-label="“Azure Virtual Machine Recommendations and best practices” (Edit)">==&gt;&gt; Azure Virtual Machine Recommendations and best practices</a>
 
@@ -21,5 +23,3 @@ There are 3 different SQL options are available in Azure and each option has dif
 2&gt; <a href="https://powershelltalk.com/2022/12/28/azure-sql-mi-best-practices-and-microsoft-recommendations/">Azure SQL MI – Best Practices and Microsoft Recommendations</a>
 
 3&gt; <a href="https://powershelltalk.com/2022/12/28/sql-on-azure-vm-iaas-best-practices-and-microsoft-recommendations/">SQL on Azure VM (IAAS) – Best Practices and Microsoft Recommendations</a>
-
-<a href="https://powershelltalk.com/2022/12/28/azure-cloud-best-practices-to-keep-your-cloud-secure/">==&gt;&gt; Overall Azure cloud best practices to Keep Your Cloud Secure</a>
