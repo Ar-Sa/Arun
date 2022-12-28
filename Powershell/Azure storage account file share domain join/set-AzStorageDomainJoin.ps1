@@ -1,3 +1,16 @@
+<#
+    .SYNOPSIS
+    Powershell to domain join Azure storage account file share 
+    
+    .DESCRIPTION    
+    
+    .NOTES
+    Author:     Arun Sabale
+    Email:      Arun.sabale@o**look.com
+    Created:    16-02-2020
+    Version:    1.0
+   
+#>
 # Change the execution policy to unblock importing AzFilesHybrid.psm1 module
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
