@@ -6,8 +6,6 @@
 
 This article describes security best practices for Azure cloud.  This recommendations are not limited to Azure but can also apply to other cloud platforms like AWS or GCP. The best practices are based on Azure recommendations as well as my experience in Azure. Azure have a set of best practices that are designed to help protect your workloads to keep them safe from constantly evolving threats. This blog will share the most important security best practices to help protect your resources.
 
-<img class="wp-image-1495 size-full" src="https://powershelltalk.com/wp-content/uploads/2022/12/Azure-Securityazure-security-best-practices-social@3x.png" alt="Azure Cloud Best Practices to Keep Your Cloud Secure" width="1280" height="670" /> Azure Cloud Best Practices to Keep Your Cloud Secure[/caption]
-
 Also refer below KB for additional resource specific best practices and recommendations:
 
 <a class="row-title" href="https://powershelltalk.com/2022/12/27/azure-virtual-machine-recommendations-and-best-practices/" aria-label="“Azure Virtual Machine Recommendations and best practices” (Edit)">==&gt;&gt; Azure Virtual Machine Recommendations and best practices</a>
