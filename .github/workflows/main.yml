@@ -19,7 +19,7 @@ jobs:
         uses: azure/docker-login@v1
         with:
         # comment out the login-server parameter if using docker hub
-          login-server: 'testwin.azurecr.io'
+          login-server: 'ACRt11.azurecr.io'
           username: 'Mpcaz123'
           password: '4Nq7fNckGPkQOjS3jexiMMI1Az0a24dBwTZuf+wHNu+ACRBACFr7'
 
